@@ -12,7 +12,6 @@ class Program
         {
             Console.Write("What is your guess? ");
             string user_answer_string = Console.ReadLine();
-            user_answer = int.Parse(user_answer_string);
 
             if (user_answer > answer)
             {
