@@ -19,10 +19,6 @@ class Program
         _promptings.Add("If you could change one thing you did today, what would it be?");
         _promptings.Add("What are you grateful for today?");
 
-        foreach (string p in _promptings){
-            Console.WriteLine(p);
-        }
-
         // Display menu options
         Console.WriteLine("Welcome to Journal!");
         while (response != "Q")
