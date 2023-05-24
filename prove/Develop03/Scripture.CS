@@ -46,4 +46,17 @@ public class Scripture {
     public bool GetAllWordsHidden(){
         return _allWordsHidden;
     }
+
+    public void Reset (string book, string chapter, string startVerse, string endVerse, string scripture){
+        Reference reference = new Reference(book, chapter, startVerse, endVerse);
+        _reference = reference.GetReference();
+        string[] list = scripture.Split(" ");
+        _words.Clear();
+        _hiddenWords = 0;
+
+        foreach (string word in list) {
+            Word newWord = new Word(word);
+            _words.Add(newWord);
+        }
+    }
 }
