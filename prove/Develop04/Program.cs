@@ -9,6 +9,11 @@ class Program
         Reflecting reflecting = new Reflecting();
         Listing listing = new Listing();
 
+        Console.WriteLine("What is your name?: ");
+        string name = Console.ReadLine();
+        Console.WriteLine();
+        Console.WriteLine($"Hello, {name}. How would you rate your mindfulness level? (1-5)");
+        Console.ReadLine();
 
         while (choice != "4") {
             Console.Clear();
@@ -30,6 +35,7 @@ class Program
                 case "2":
                     reflecting.DisplayStartMessage();
                     Console.WriteLine();
+                    reflecting.AskDuration();
                     reflecting.Activity();
                     reflecting.DisplayEndMessage();
                     break;

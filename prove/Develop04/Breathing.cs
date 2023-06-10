@@ -3,8 +3,8 @@ using System;
 public class Breathing : Activity {
     public Breathing () : base("This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.", "Breathing") {}
     public void Activity () {
-        DateTime startTime = DateTime.Now;
         AskDuration();
+        DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(GetDuration());
         Console.Clear();
         Console.WriteLine("Get ready...");

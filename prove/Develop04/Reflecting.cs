@@ -41,7 +41,7 @@ public class Reflecting : Activity {
         Console.WriteLine("Now ponder on each of the following questions as they related to this experience.");
         Console.Write("You may begin in: ");
 
-        for (int i = 5; i < 0; i--) {
+        for (int i = 5; i > 0; i--) {
             Console.Write(i);
             Thread.Sleep(1000);
             Console.Write("\b \b");
@@ -50,11 +50,14 @@ public class Reflecting : Activity {
             Console.Clear();
 
         DateTime startTime = DateTime.Now;
-        AskDuration();
         DateTime endTime = startTime.AddSeconds(GetDuration());
         while (DateTime.Now < endTime) {
             DisplayRandomQuestion();
-            DisplayWaitingAnimation(15);
+            Console.WriteLine();
+            Console.WriteLine("Press enter to continue.");
+            Console.ReadLine();
+
+            // DisplayWaitingAnimation(15);
             }
     }
     public void DisplayRandomPrompt () {
@@ -66,7 +69,7 @@ public class Reflecting : Activity {
     public void DisplayRandomQuestion () {
         Random rnd = new Random();
         Console.Write("> ");
-        Console.Write(_promptings[rnd.Next(_questions.Count)]);
+        Console.Write(_questions[rnd.Next(_questions.Count())]);
         Console.Write(" ");
     }
 }
