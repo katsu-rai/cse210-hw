@@ -9,10 +9,10 @@ class Program
         Reflecting reflecting = new Reflecting();
         Listing listing = new Listing();
 
-        Console.WriteLine("What is your name?: ");
+        Console.Write("What is your name?: ");
         string name = Console.ReadLine();
         Console.WriteLine();
-        Console.WriteLine($"Hello, {name}. How would you rate your mindfulness level? (1-5)");
+        Console.Write($"Hello, {name}. How would you rate your mindfulness level? (1-5): ");
         Console.ReadLine();
 
         while (choice != "4") {
