@@ -1,0 +1,4 @@
+Points:52
+SimpleGoal:hij,gagjka,12,True
+EternalGoal:hello,hi,30
+ChecklistGoal:good,bad,10,30,2,1
