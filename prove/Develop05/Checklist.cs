@@ -10,8 +10,7 @@ public class Checklist : Goal {
         _attempts = attempts;
         if (attempts >= howManyHasToBeCompleted) {_achieved = true;}
     }
-    public override int RecordEvent()
-    {
+    public override int RecordEvent() {
         int returnPoints = 0;
         _attempts ++;
         if (_attempts == _howManyHasToBeCompleted) {

@@ -3,8 +3,7 @@ using System.IO;
 
 class Program
 {
-    static void Main(string[] args)
-    {
+    static void Main(string[] args) {
         // variables
         string choice = null;
         int totalPoints = 0;
@@ -148,8 +147,7 @@ class Program
 
                 string[] allGoals = System.IO.File.ReadAllLines(filename);
 
-                foreach (string goal in allGoals)
-                {
+                foreach (string goal in allGoals) {
                     string[] parts = goal.Split(":");
 
                     string goalType = parts[0];
