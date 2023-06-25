@@ -7,7 +7,7 @@ public class Eternal : Goal {
         int returnPoints = _points;
         return returnPoints;
     }
-    public override string WirteInFile()
+    public override string WriteInFile()
     {
             return $"EternalGoal:{_goal},{_description},{_points}";
     }

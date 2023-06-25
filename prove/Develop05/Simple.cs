@@ -9,7 +9,7 @@ public class Simple : Goal {
         int returnPoints  = _points;
         return returnPoints;
     }
-    public override string WirteInFile()
+    public override string WriteInFile()
     {
             return $"SimpleGoal:{_goal},{_description},{_points},{_achieved}";
     }

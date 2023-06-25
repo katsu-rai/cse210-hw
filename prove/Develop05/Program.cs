@@ -134,7 +134,7 @@ class Program
                         outputFile.WriteLine($"Points:{totalPoints}");
                     
                         foreach(Goal goal in goals){
-                            outputFile.WriteLine(goal.WirteInFile());
+                            outputFile.WriteLine(goal.WriteInFile());
                         }
                     }
                     break;

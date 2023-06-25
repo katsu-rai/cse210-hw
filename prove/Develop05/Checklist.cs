@@ -8,7 +8,7 @@ public class Checklist : Goal {
         _bonusPoints = bonusPoints;
         _howManyHasToBeCompleted = howManyHasToBeCompleted;
         _attempts = attempts;
-        _achieved = (attempts >= howManyHasToBeCompleted) ? true : false;
+        if (attempts >= howManyHasToBeCompleted) {_achieved = true;}
     }
     public override int RecordEvent()
     {
@@ -30,7 +30,7 @@ public class Checklist : Goal {
 
         Console.WriteLine($"{checkBox} {_goal} ({_description}) -- Currently completed: {_attempts}/{_howManyHasToBeCompleted}");
     }
-    public override string WirteInFile()
+    public override string WriteInFile()
     {
         return $"ChecklistGoal:{_goal},{_description},{_points},{_bonusPoints},{_howManyHasToBeCompleted},{_attempts}";
     }

@@ -22,5 +22,5 @@ public abstract class Goal {
 
         Console.WriteLine($"{checkBox} {_goal} ({_description})");
     }
-    public abstract string WirteInFile(); 
+    public abstract string WriteInFile();
 }
