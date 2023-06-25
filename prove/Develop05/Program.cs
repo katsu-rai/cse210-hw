@@ -26,6 +26,10 @@ class Program
         int goalAccomplished = 0;
         int pointsEarned = 0;
 
+        // --------------------------
+        Console.WriteLine("Welcome to Goal games! You can be who you want to be as you gain points!");
+        Console.WriteLine("Imagine becoming somebody you want to be, and write breifly to motivate yourself.");
+        Console.ReadLine();
 
         while (choice != "6") {
             Console.WriteLine();
