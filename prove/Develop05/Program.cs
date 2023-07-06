@@ -3,7 +3,8 @@ using System.IO;
 
 class Program
 {
-    static void Main(string[] args) {
+    static void Main(string[] args)
+    {
         // variables
         string choice = null;
         int totalPoints = 0;
@@ -31,7 +32,8 @@ class Program
         Console.WriteLine("Imagine becoming somebody you want to be, and write breifly to motivate yourself.");
         Console.ReadLine();
 
-        while (choice != "6") {
+        while (choice != "6")
+        {
             Console.WriteLine();
             Console.WriteLine($"You have {totalPoints} points.");
             Console.WriteLine();
@@ -45,8 +47,9 @@ class Program
             Console.Write("Select a choice from a menu: ");
             choice = Console.ReadLine();
 
-            switch (choice) {
-                case "1": 
+            switch (choice)
+            {
+                case "1":
                     Console.WriteLine();
                     Console.WriteLine();
                     Console.WriteLine("The types of Goals are:");
@@ -56,7 +59,8 @@ class Program
                     Console.Write("Which type of goal would you like to creat? ");
                     typeOfGoal = Console.ReadLine();
 
-                    switch (typeOfGoal) {
+                    switch (typeOfGoal)
+                    {
                         // Simple Goal
                         case "1":
                             Console.WriteLine();
@@ -90,7 +94,7 @@ class Program
                             goals.Add(eternal);
                             break;
                         case "3":
-                        // Checklist Goal
+                            // Checklist Goal
                             Console.WriteLine();
                             Console.Write("What is the name of goal? ");
                             goalName = Console.ReadLine();
@@ -117,9 +121,10 @@ class Program
                     }
                     break;
                 case "2":
-                // List goals
+                    // List goals
                     i = 1;
-                    foreach(Goal goal in goals){
+                    foreach (Goal goal in goals)
+                    {
                         Console.Write($"{i}. ");
                         goal.DisplayGoal();
 
@@ -127,7 +132,7 @@ class Program
                     }
                     break;
                 case "3":
-                // Save goals
+                    // Save goals
                     Console.WriteLine();
                     Console.Write("What is the filename for the goal file? ");
                     filename = Console.ReadLine() + ".txt";
@@ -135,74 +140,78 @@ class Program
                     using (StreamWriter outputFile = new StreamWriter(filename))
                     {
                         outputFile.WriteLine($"Points:{totalPoints}");
-                    
-                        foreach(Goal goal in goals){
+
+                        foreach (Goal goal in goals)
+                        {
                             outputFile.WriteLine(goal.WriteInFile());
                         }
                     }
                     break;
                 case "4":
-                // Load goals
-                // First, get all the goals and put each one in its own string.
-                // Each line will have the goalType and details all in one string
-                Console.WriteLine();
-                Console.WriteLine("What is the file name for the goal file.");
-                filename = Console.ReadLine() + ".txt";
+                    // Load goals
+                    // First, get all the goals and put each one in its own string.
+                    // Each line will have the goalType and details all in one string
+                    Console.WriteLine();
+                    Console.WriteLine("What is the file name for the goal file.");
+                    filename = Console.ReadLine() + ".txt";
 
-                string[] allGoals = System.IO.File.ReadAllLines(filename);
+                    string[] allGoals = System.IO.File.ReadAllLines(filename);
 
-                foreach (string goal in allGoals) {
-                    string[] parts = goal.Split(":");
+                    foreach (string goal in allGoals)
+                    {
+                        string[] parts = goal.Split(":");
 
-                    string goalType = parts[0];
-                    string details = parts[1];
-                    string [] data = details.Split(',');
+                        string goalType = parts[0];
+                        string details = parts[1];
+                        string[] data = details.Split(',');
 
-                    switch(goalType) {
-                        case "SimpleGoal":
-                            goalName = data[0];
-                            description = data[1];
-                            points = int.Parse(data[2]);
-                            achieved = (data[3] == "True");
+                        switch (goalType)
+                        {
+                            case "SimpleGoal":
+                                goalName = data[0];
+                                description = data[1];
+                                points = int.Parse(data[2]);
+                                achieved = (data[3] == "True");
 
-                            Simple loadSimple = new Simple(goalName, description, points, achieved);
-                            goals.Add(loadSimple);
+                                Simple loadSimple = new Simple(goalName, description, points, achieved);
+                                goals.Add(loadSimple);
 
-                            break;
-                        case "EternalGoal":
-                            goalName = data[0];
-                            description = data[1];
-                            points = int.Parse(data[2]);
+                                break;
+                            case "EternalGoal":
+                                goalName = data[0];
+                                description = data[1];
+                                points = int.Parse(data[2]);
 
-                            Eternal loadEternal = new Eternal(goalName, description, points);
-                            goals.Add(loadEternal);
+                                Eternal loadEternal = new Eternal(goalName, description, points);
+                                goals.Add(loadEternal);
 
-                            break;
-                        case "ChecklistGoal":
-                            goalName = data[0];
-                            description = data[1];
-                            points = int.Parse(data[2]);
-                            bonusPoints = int.Parse(data[3]);
-                            howManyHasToBeCompleted = int.Parse(data[4]);
-                            attempt = int.Parse(data[5]);
+                                break;
+                            case "ChecklistGoal":
+                                goalName = data[0];
+                                description = data[1];
+                                points = int.Parse(data[2]);
+                                bonusPoints = int.Parse(data[3]);
+                                howManyHasToBeCompleted = int.Parse(data[4]);
+                                attempt = int.Parse(data[5]);
 
-                            Checklist loadChecklist = new Checklist
-                            (goalName, description, points, bonusPoints, howManyHasToBeCompleted, attempt);
-                            goals.Add(loadChecklist);
+                                Checklist loadChecklist = new Checklist
+                                (goalName, description, points, bonusPoints, howManyHasToBeCompleted, attempt);
+                                goals.Add(loadChecklist);
 
-                            break;
-                        case "Points":
-                            totalPoints = int.Parse(data[0]);
-                            break;
+                                break;
+                            case "Points":
+                                totalPoints = int.Parse(data[0]);
+                                break;
+                        }
                     }
-                }
                     break;
                 case "5":
                     Console.WriteLine();
                     Console.WriteLine("The goals are:");
 
                     i = 1;
-                    foreach(Goal goal in goals){
+                    foreach (Goal goal in goals)
+                    {
                         Console.Write($"{i}. ");
                         goal.DisplayGoal();
 
@@ -216,10 +225,10 @@ class Program
                     totalPoints += pointsEarned;
 
                     Console.WriteLine($"You now have {totalPoints} points.");
-                // Record Event
+                    // Record Event
                     break;
                 case "6":
-                // Quit
+                    // Quit
                     break;
                 default:
                     Console.WriteLine("Invalid response");

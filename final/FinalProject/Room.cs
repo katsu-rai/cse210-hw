@@ -1,24 +1,39 @@
 using System;
 
-public abstract class Room 
+public abstract class Room
 {
-    private int _capacity;
-    private int _pricePerNight;
-    private string _bedsize;
-    private int _roomNumber;
-    private bool _isAvailable;
-    
-    public Room (int capacity, int price, string bedsize, int roomNumber, bool isAvailable = true) 
+    protected int _capacity;
+    protected int _pricePerNight;
+    protected string _bedsize;
+    protected int _roomNumber;
+    private List<string> _bookedDate;
+
+    public Room(int capacity, int price, string bedsize, int roomNumber)
     {
         _capacity = capacity;
         _pricePerNight = price;
         _bedsize = bedsize;
         _roomNumber = roomNumber;
-        _isAvailable = isAvailable;
+        _bookedDate = new List<string>();
     }
-    public void IsBooked() 
+    public void IsBookedOnThisDay(string date)
     {
-        _isAvailable = false;
+        _bookedDate.Add(date);
     }
     public abstract void DisplayDescription();
+    public List<string> GetBookedDate()
+    {
+        return _bookedDate;
+    }
+    public bool IsAvailable(string date)
+    {
+        foreach (string bookedDate in _bookedDate)
+        {
+            if (date == bookedDate)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 }
