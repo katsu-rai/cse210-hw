@@ -42,7 +42,27 @@ class Program
         Console.Write("=> ");
         customerName = Console.ReadLine();
 
-        // create cutomer class
+        string[] allBookings = System.IO.File.ReadAllLines("hotelBooking.txt");
+        foreach (string booking in allBookings)
+        {
+            string[] data = booking.Split(',');
+            string date = data[0];
+            int roomNumber = int.Parse(data[1]);
+            string name = data[2];
+
+            Booking loadedBooking = new Booking(date, roomNumber, name);
+            JapanPrinceHotel.AddBookingToHotel(loadedBooking);
+        }
+
+
+        Customer previousCustomer = new Customer(customerName);
+        foreach (Booking bookingInList in JapanPrinceHotel.GetBookings())
+        {
+            if (customerName == bookingInList.GetNameInBooking())
+            {
+                previousCustomer.AddBookingToCustomer(bookingInList);
+            }
+        }
 
         while (choice != "4")
         {
@@ -74,14 +94,14 @@ class Program
                     reservedRoomNumber = int.Parse(Console.ReadLine());
 
                     Console.WriteLine();
-                    Console.WriteLine("To confirm your reservation, would you type in your phone number?(without '-')");
-                    Console.Write("=>");
+                    Console.WriteLine($"Your reservation is {reservationDate}, {reservedRoomNumber}");
+                    Console.WriteLine("To confirm your reservation, press enter");
                     customerPhoneNumber = Console.ReadLine();
 
                     //make a booking class and add it to cutoemer and hotel classes
-                    Customer customer = new Customer(customerName, customerPhoneNumber);
+                    Customer customer = new Customer(customerName);
 
-                    Booking booking = new Booking(reservationDate, reservedRoomNumber, customer);
+                    Booking booking = new Booking(reservationDate, reservedRoomNumber, customerName);
                     JapanPrinceHotel.AddBookingToHotel(booking);
 
                     Console.WriteLine("Your reservation is confirmed.");
@@ -93,7 +113,7 @@ class Program
                     {
                         if (customerName == bookingInList.GetNameInBooking())
                         {
-                            bookingInList.WriteInFile();
+                            Console.WriteLine(bookingInList.WriteInFile());
                         }
                     }
                     break;
@@ -105,7 +125,7 @@ class Program
                     {
                         if (customerName == bookingInList.GetNameInBooking())
                         {
-                            bookingInList.WriteInFile();
+                            Console.WriteLine(bookingInList.WriteInFile());
                         }
                     }
 
@@ -123,6 +143,13 @@ class Program
                     break;
                 case "4":
                     // Quit
+                    using (StreamWriter outputFile = new StreamWriter("hotelBooking.txt"))
+                    {
+                        foreach (Booking bookingInList in JapanPrinceHotel.GetBookings())
+                        {
+                            bookingInList.WriteInFile();
+                        }
+                    }
                     break;
                 default:
                     Console.WriteLine("Invalid response");
