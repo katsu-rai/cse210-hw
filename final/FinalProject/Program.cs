@@ -133,13 +133,15 @@ class Program
                     Console.Write("=>");
                     cancelationDate = Console.ReadLine();
 
-                    foreach (Booking cancelBooking in JapanPrinceHotel.GetBookings())
+                    for (int i = 0; i < JapanPrinceHotel.GetBookings().Count(); i++)
                     {
-                        if (cancelationDate == cancelBooking.GetDate())
+                        if (cancelationDate == JapanPrinceHotel.GetBookings()[i].GetDate())
                         {
-                            JapanPrinceHotel.DeleteBookingFromList(cancelBooking);
+                            JapanPrinceHotel.DeleteBookingFromList(JapanPrinceHotel.GetBookings()[i]);
+                            Console.WriteLine("Your reservation was successfully canceled.");
                         }
                     }
+
                     break;
                 case "4":
                     // Quit
