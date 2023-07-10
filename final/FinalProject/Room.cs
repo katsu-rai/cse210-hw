@@ -16,10 +16,6 @@ public abstract class Room
         _roomNumber = roomNumber;
         _bookedDate = new List<string>();
     }
-    public void IsBookedOnThisDay(string date)
-    {
-        _bookedDate.Add(date);
-    }
     public abstract void DisplayDescription();
     public List<string> GetBookedDate()
     {
