@@ -8,22 +8,19 @@ class Program
         Hotel JapanPrinceHotel = new Hotel("Japan Prince Hotel");
 
         List<Room> rooms = new List<Room>();
-        Single single101 = new Single(101);
+        SingleRoom single101 = new SingleRoom(101);
         rooms.Add(single101);
-        Single single102 = new Single(102);
+        SingleRoom single102 = new SingleRoom(102);
         rooms.Add(single102);
-        Double double103 = new Double(103);
+        DoubleRoom double103 = new DoubleRoom(103);
         rooms.Add(double103);
-        Double double201 = new Double(201);
+        DoubleRoom double201 = new DoubleRoom(201);
         rooms.Add(double201);
-        Triple triple202 = new Triple(202);
+        TripleRoom triple202 = new TripleRoom(202);
         rooms.Add(triple202);
-        Suite suite203 = new Suite(203);
+        SuiteRoom suite203 = new SuiteRoom(203);
         rooms.Add(suite203);
-        foreach (Room room in rooms)
-        {
-            JapanPrinceHotel.AddRoomToHotel(room);
-        }
+        JapanPrinceHotel.AddRoomToHotel(rooms);
 
         string customerName = null;
         string customerPhoneNumber = null;

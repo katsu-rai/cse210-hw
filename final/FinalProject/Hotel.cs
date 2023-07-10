@@ -11,9 +11,12 @@ public class Hotel
         _rooms = new List<Room>();
         _bookings = new List<Booking>();
     }
-    public void AddRoomToHotel(Room newRoom)
+    public void AddRoomToHotel(List<Room> newRooms)
     {
-        _rooms.Add(newRoom);
+        foreach (Room room in newRooms)
+        {
+            _rooms.Add(room);
+        }
     }
     public List<Room> GetRooms()
     {
