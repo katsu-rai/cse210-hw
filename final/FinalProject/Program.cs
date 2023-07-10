@@ -149,7 +149,7 @@ class Program
                     {
                         foreach (Booking bookingInList in JapanPrinceHotel.GetBookings())
                         {
-                            bookingInList.WriteInFile();
+                            outputFile.WriteLine(bookingInList.WriteInFile());
                         }
                     }
                     break;
